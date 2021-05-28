@@ -187,7 +187,7 @@ check_errors "Could not configure GitHub Actions!" \
 
 # Configure PR template
 print_info_message "Configuring GitHub PR template..."
-touch ./.github/workflows/pull_request_template.md
+touch ./.github/pull_request_template.md
 cat <<PR_TEMPLATE >./.github/pull_request_template.md
 ### Added
 
