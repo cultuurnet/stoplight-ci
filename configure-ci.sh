@@ -2,7 +2,6 @@
 
 # Shell script that configures a stoplight-docs git repository so that it has the expected CI setup.
 # Arguments:
-# - Lowercase name of the Stoplight project slug. (e.g. "uitpas") (REQUIRED)
 # - Directory to execute this script in (optional)
 
 # Function to print info messages
@@ -54,28 +53,24 @@ add_yarn_package () {
   print_success_message "Successfully added/updated yarn package $1@$2!"
 }
 
-if [ $# -lt 1 ]
-then
-   print_error_message "Project name required! Please specify as first argument that corresponds to your Stoplight project's slug. E.g. 'uitpas'"
-   exit 1
-fi
-
 # If a directory is specified (as second argument), switch to it first
-if [ $# -gt 1 ]
+if [ $# -gt 0 ]
 then
-   print_info_message "Switching to directory $2"
-   cd $2
+   print_info_message "Switching to directory $1"
+   cd $1
 fi
 if [ ! $? -eq 0 ]; then
-  print_error_message "Could not switch to directory $2"
+  print_error_message "Could not switch to directory $1"
   exit 1
 fi
 
-# Check that we're inside a git repository
-if [ ! -d .git ]; then
-  print_error_message "Current directory is not a git directory. Please run this script in the directory of the repository that should be configured."
+# Check that we're inside a stoplight-docs-... repository
+DIR_NAME=${PWD##*/}
+if [[ ! $DIR_NAME == stoplight-docs-* ]]; then
+  print_error_message "Current directory is not a stoplight-docs directory ($DIR_NAME, should be stoplight-docs-...)!"
   exit 1
 fi
+NAME=${DIR_NAME#"stoplight-docs-"}
 
 # Check that npm is available
 if ! check_command_exists "npm"; then
@@ -225,9 +220,9 @@ check_errors "Could not configure GitHub PR template!" \
 print_info_message "Configuring README..."
 touch README.md
 cat <<README >README.md
-# stoplight-docs-$1
+# stoplight-docs-$NAME
 
-This is the repository behind https://publiq.stoplight.io/docs/$1
+This is the repository behind https://publiq.stoplight.io/docs/$NAME
 
 ## Contribution
 
