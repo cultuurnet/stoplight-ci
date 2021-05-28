@@ -11,7 +11,7 @@ Usage:
 $ ./configure-ci.sh [ <directory>]
 ```
 
-- `directory`: The directory to execute the script in (optional)
+- `directory`: The directory to execute the script in (optional). If not provided, the script will be executed in the current directory.
 
 **You do not need to clone this repository to use this script.** Instead, you can use this script using `curl` by executing the following command in the directory of your local clone of the stoplight-docs repository that should be configured:
 ```shell
