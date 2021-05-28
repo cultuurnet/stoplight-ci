@@ -3,6 +3,7 @@
 # Shell script that configures a stoplight-docs git repository so that it has the expected CI setup.
 # Arguments:
 # - Lowercase name of the Stoplight project slug. (e.g. "uitpas") (REQUIRED)
+# - Directory to execute this script in (optional)
 
 # Function to print info messages
 print_info_message () {
@@ -57,6 +58,17 @@ if [ $# -lt 1 ]
 then
    print_error_message "Project name required! Please specify as first argument that corresponds to your Stoplight project's slug. E.g. 'uitpas'"
    exit 1
+fi
+
+# If a directory is specified (as second argument), switch to it first
+if [ $# -gt 1 ]
+then
+   print_info_message "Switching to directory $2"
+   cd $2
+fi
+if [ ! $? -eq 0 ]; then
+  print_error_message "Could not switch to directory $2"
+  exit 1
 fi
 
 # Check that we're inside a git repository
