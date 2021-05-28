@@ -13,6 +13,7 @@ print_info_message () {
 print_error_message () {
   MESSAGE=$(print_info_message "$1")
   echo -e "\033[31m$MESSAGE\033[0m"
+  exit 1
 }
 
 # Function to print success messages
@@ -25,7 +26,6 @@ print_success_message () {
 check_errors () {
   if [ ! $? -eq 0 ]; then
     print_error_message "$1"
-    exit 1
   fi
   print_success_message "$2"
 }
@@ -41,13 +41,11 @@ add_yarn_package () {
   yarn add $1@"$2" > /dev/null 2> /dev/null
   if [ ! $? -eq 0 ]; then
     print_error_message "Could not add yarn package $1@$2!"
-    exit 1
   fi
 
   yarn upgrade $1 > /dev/null 2> /dev/null
   if [ ! $? -eq 0 ]; then
     print_error_message "Could not upgrade yarn package $1@$2!"
-    exit 1
   fi
 
   print_success_message "Successfully added/updated yarn package $1@$2!"
@@ -61,14 +59,12 @@ then
 fi
 if [ ! $? -eq 0 ]; then
   print_error_message "Could not switch to directory $1"
-  exit 1
 fi
 
 # Check that we're inside a stoplight-docs-... repository
 DIR_NAME=${PWD##*/}
 if [[ ! $DIR_NAME == stoplight-docs-* ]]; then
   print_error_message "Current directory is not a stoplight-docs directory ($DIR_NAME, should be stoplight-docs-...)!"
-  exit 1
 fi
 NAME=${DIR_NAME#"stoplight-docs-"}
 
@@ -156,7 +152,6 @@ mkdir .github > /dev/null 2> /dev/null
 mkdir .github/workflows > /dev/null 2> /dev/null
 if [ ! -d ./.github/workflows ]; then
   print_error_message "Directory ./.github/workflows does not exist and could not be created!"
-  exit 1
 fi
 
 touch ./.github/workflows/ci.yml
