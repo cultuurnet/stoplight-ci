@@ -19,6 +19,7 @@ $ ./configure-ci.sh [ <directory>]
 $ git clone git@github.com:cultuurnet/stoplight-docs-uitpas.git
 $ cd stoplight-docs-uitpas
 
+# Download and execute the config-ci.sh script
 $ bash <(curl -fsSL https://raw.githubusercontent.com/cultuurnet/stoplight-ci/main/configure-ci.sh)
 ```
 
