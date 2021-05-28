@@ -235,7 +235,7 @@ Be sure to also check the [internal guidelines](https://publiq.stoplight.io/docs
 
 > ### Warning!
 >
-> Never update the following files manually, but use [cultuurnet/stoplight-ci](github.com/cultuurnet/stoplight-ci) instead!
+> Never update the following files manually, but use [cultuurnet/stoplight-ci](https://github.com/cultuurnet/stoplight-ci) instead!
 >
 > If you update them manually, your changes will get overwritten in later updates to the CI setup.
 >
