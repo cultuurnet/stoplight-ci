@@ -6,6 +6,30 @@ This repository is a collection of shell scripts that help automate the CI confi
 
 This script automatically adds the required config files and npm packages to a local clone of a `stoplight-docs` repository.
 
+It will add/update the following `npm` packages through `yarn`:
+
+- `@stoplight/spectral` to lint OpenAPI files
+- `remark-cli` to lint Markdown files
+- `remark-preset-lint-recommended` to lint Markdown files for common errors
+- `remark-lint-no-dead-urls` to check for dead external URLs in Markdown files
+- `remark-validate-links` to check for dead internal links in Markdown files
+
+If the git repository didn't ignore the `node_modules` folder yet, it will be added to `.gitignore`.
+
+Additionally, it adds/overwrites the following files:
+
+- `.spectral.json` to configure the Spectral rulesets
+- `.remarkrc` to configure the Remark rulesets
+- `.github/workflows/ci.yml` to run Spectral and Remark in GitHub Actions
+- `.github/pull_request_template.md` to provide a template for PRs
+- `README.md` to provide documentation about how to make changes to Stoplight documentation repositories
+
+It also provides the following `yarn` scripts to easily run the linting yourself inside the target repository:
+
+- `api:lint` to lint OpenAPI files in the `/reference` directory of the repository
+- `docs:lint` to lint Markdown files in the `/docs` directory of the repository
+- `docs:lint:fix` to attempt to automatically fix errors in said Markdown files
+
 Usage:
 ```shell
 $ ./configure-ci.sh [ <directory>]
