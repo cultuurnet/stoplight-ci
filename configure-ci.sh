@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Shell script that configures a stoplight-docs git repository so that it has the expected CI setup.
+# Arguments:
+# - Lowercase name of the Stoplight project slug. (e.g. "uitpas") (REQUIRED)
+
 # Function to print info messages
 print_info_message () {
   echo "[stoplight-ci] $1"
@@ -48,6 +52,12 @@ add_yarn_package () {
 
   print_success_message "Successfully added/updated yarn package $1@$2!"
 }
+
+if [ $# -lt 1 ]
+then
+   print_error_message "Project name required! Please specify as first argument that corresponds to your Stoplight project's slug. E.g. 'uitpas'"
+   exit 1
+fi
 
 # Check that we're inside a git repository
 if [ ! -d .git ]; then
