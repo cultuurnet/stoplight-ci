@@ -48,3 +48,20 @@ $ bash <(curl -fsSL https://raw.githubusercontent.com/cultuurnet/stoplight-ci/ma
 ```
 
 ⚠️ The script will only work in directories whose name starts with `stoplight-docs-`.
+
+## configure-repository.sh
+
+Use this script to run `configure-ci.sh` in a repository that you don't have a local clone of.
+
+It will check out a given repository URL, run `configure-ci.sh` in it, commit any changes to a given branch, and push the branch. 
+Afterward it will remove the checked out repository again. 
+
+Usage:
+```shell
+$ ./configure-repository.sh <repository-url> <branch-name>
+```
+
+- `repository-url`: Git URL of the repository to clone. Can be either an HTTPS or SSH URL, depending on what you normally use. For example `git@github.com:cultuurnet/stoplight-docs-uitpas.git`.
+- `branch-name`: The name of the branch to commit and push changes to (if there are any). Can be an existing or new branch.
+
+To use this script you have to make a clone of this repository (`cultuurnet/stoplight-ci`) and execute it inside the checked out directory.
