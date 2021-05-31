@@ -2,6 +2,11 @@
 
 This repository is a collection of shell scripts that help automate the CI configuration of the various [stoplight-docs repositories](https://github.com/cultuurnet?q=stoplight-docs-&type=&language=&sort=) in the cultuurnet organization.
 
+## requirements
+
+- node, specifically with npm 7+ (use nvm to switch to node 15+)
+- yarn 1
+
 ## configure-ci.sh
 
 This script automatically adds the required config files and npm packages to a local clone of a `stoplight-docs` repository.
