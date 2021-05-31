@@ -37,11 +37,11 @@ check_command_exists () {
   type "$1" > /dev/null 2>/dev/null
 }
 
-# Check if at least one argument is specified
+# Check if at least two arguments are specified
 if [ $# -lt 2 ]
 then
    print_error_message "Please provide 2 arguments: The URL of the repository, and the branch name to commit changes to."
-   cd $1
+   exit 1
 fi
 
 URL=$1
