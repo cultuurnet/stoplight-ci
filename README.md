@@ -73,7 +73,10 @@ To use this script you have to make a clone of this repository (`cultuurnet/stop
 
 ## configure-all-repositories.sh
 
-Runs `configure-repository.sh` for a list of all known `stoplight-docs` repositories in the cultuurnet organization.
+Runs `configure-repository.sh` for a list of all known `stoplight-docs` repositories in the cultuurnet organization. 
+Will display the full list and ask for confirmation first. 
+
+If you do not want to update a specific repository, you can run the script for all repositories and simply delete the branch with the changes in the specific repository that should not be updated (yet).
 
 Usage:
 ```shell
