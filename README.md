@@ -70,3 +70,16 @@ $ ./configure-repository.sh <repository-url> <branch-name>
 - `branch-name`: The name of the branch to commit and push changes to (if there are any). Can be an existing or new branch.
 
 To use this script you have to make a clone of this repository (`cultuurnet/stoplight-ci`) and execute it inside the checked out directory.
+
+## configure-all-repositories.sh
+
+Runs `configure-repository.sh` for a list of all known `stoplight-docs` repositories in the cultuurnet organization.
+
+Usage:
+```shell
+$ ./configure-all-repositories.sh <branch-name>
+```
+
+- `branch-name`: The name of the branch to commit and push changes to (if there are any). Can be an existing or new branch.
+
+To use this script you have to make a clone of this repository (`cultuurnet/stoplight-ci`) and execute it inside the checked out directory.
