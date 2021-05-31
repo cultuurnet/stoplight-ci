@@ -5,12 +5,7 @@
 # Arguments:
 # - Branch name to commit and push the changes on
 
-declare -a REPOSITORIES=(
-  "git@github.com:cultuurnet/stoplight-docs-authentication.git"
-  "git@github.com:cultuurnet/stoplight-docs-guidelines.git"
-  "git@github.com:cultuurnet/stoplight-docs-uitdatabank.git"
-  "git@github.com:cultuurnet/stoplight-docs-uitpas.git"
-)
+IFS=$'\r\n' GLOBIGNORE='*' command eval  'REPOSITORIES=($(cat ./repositories))'
 
 # Function to print info messages
 print_info_message () {
