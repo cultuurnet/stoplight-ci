@@ -81,7 +81,7 @@ fi
 # Add/update packages for linting
 print_info_message "Installing/upgrading spectral and remark packages for linting..."
 
-add_yarn_package "@stoplight/spectral" "^5.9.1"
+add_yarn_package "@stoplight/spectral" "^6.0.0-alpha3"
 add_yarn_package "remark-cli" "^9.0.0"
 add_yarn_package "remark-preset-lint-recommended" "^5.0.0"
 add_yarn_package "remark-lint-no-dead-urls" "^1.1.0"
