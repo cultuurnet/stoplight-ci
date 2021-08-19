@@ -110,11 +110,15 @@ print_info_message "Configuring remark..."
 touch .remarkrc
 cat <<REMARKRC >.remarkrc
 {
-  "plugins": [
-    "remark-preset-lint-recommended",
-    "remark-lint-no-dead-urls",
-    "remark-validate-links"
-  ]
+  "plugins": {
+    "remark-preset-lint-recommended": null,
+    "remark-lint-no-dead-urls": {
+        "skipUrlPatterns": [
+            "https://helpdesk.publiq.be"
+        ]
+    },
+    "remark-validate-links": null
+  }
 }
 REMARKRC
 check_errors "Failed to configure remark!" \
