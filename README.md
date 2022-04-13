@@ -1,3 +1,9 @@
+# Warning! ⚠️
+
+This repository has been archived and is replaced by CI scripts in a new monorepo for all API documentation at https://github.com/cultuurnet/apidocs
+
+---
+
 # stoplight-ci
 
 This repository is a collection of shell scripts that help automate the CI configuration of the various [stoplight-docs repositories](https://github.com/cultuurnet?q=stoplight-docs-&type=&language=&sort=) in the cultuurnet organization.
